@@ -1,0 +1,9 @@
+[package]
+name = "chapter_3_oscillation"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+macroquad ={workspace = true}
+vec_math ={workspace = true}
+runner ={workspace = true}
