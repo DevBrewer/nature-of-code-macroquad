@@ -1,5 +1,5 @@
 use macroquad::window::{Conf, next_frame};
-use runner::{App, ExampleEntry};
+use runner::{App, ExampleEntry, window_conf};
 
 use crate::examples::{
     accept_reject::AcceptRejectDistribution, gaussian_distribution::GaussianDistribution,
@@ -12,21 +12,14 @@ mod examples;
 mod walker;
 mod walker_right;
 
-const WIDTH: f32 = 400.0;
-const HEIGHT: f32 = 400.0;
-fn window_conf() -> Conf {
-    Conf {
-        window_title: "Nature of Code - Chapter 0".to_string(),
-        window_width: WIDTH as i32,
-        window_height: HEIGHT as i32,
-        high_dpi: false,
-        sample_count: 4,
-        window_resizable: false,
-        ..Default::default()
-    }
+const WIDTH: i32 = 400;
+const HEIGHT: i32 = 400;
+
+fn config() -> Conf {
+    window_conf("Nature of Code - Chapter 0", WIDTH, HEIGHT)
 }
 
-#[macroquad::main(window_conf)]
+#[macroquad::main(config)]
 async fn main() {
     let examples: Vec<ExampleEntry> = vec![
         ExampleEntry {
@@ -79,7 +72,7 @@ async fn main() {
         },
     ];
 
-    let mut app = App::new(examples, WIDTH, HEIGHT);
+    let mut app = App::from_screen(examples);
     loop {
         app.update();
 

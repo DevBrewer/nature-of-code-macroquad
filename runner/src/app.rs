@@ -3,10 +3,23 @@ use macroquad::{
     color::{Color, WHITE},
     input::{KeyCode, is_key_pressed},
     text::draw_text,
-    window::clear_background,
+    window::{Conf, clear_background},
 };
 
 use crate::{camera::Camera, example::ExampleEntry, render::fade_world};
+
+/// Constructs a standard Macroquad window configuration.
+pub fn window_conf(title: &str, width: i32, height: i32) -> Conf {
+    Conf {
+        window_title: title.to_string(),
+        window_width: width,
+        window_height: height,
+        high_dpi: false,
+        sample_count: 4,
+        window_resizable: false,
+        ..Default::default()
+    }
+}
 
 pub struct App {
     current: usize,

@@ -1,5 +1,5 @@
 use macroquad::window::{Conf, next_frame};
-use runner::{App, ExampleEntry};
+use runner::{App, ExampleEntry, window_conf};
 
 use crate::examples::{
     attract_many::AttractionMany, attraction::AttractionExample, barnes_hut_n_body::BarnesHutNBody,
@@ -14,22 +14,14 @@ mod examples;
 mod liquid;
 mod mover;
 
-const HEIGHT: f32 = 600.0;
-const WIDTH: f32 = 600.0;
+const WIDTH: i32 = 600;
+const HEIGHT: i32 = 600;
 
-fn window_conf() -> Conf {
-    Conf {
-        window_title: "Nature of Code - Chapter 2".into(),
-        window_width: 600,
-        window_height: 600,
-        high_dpi: false,
-        sample_count: 4,
-        window_resizable: false,
-        ..Default::default()
-    }
+fn config() -> Conf {
+    window_conf("Nature of Code - Chapter 2", WIDTH, HEIGHT)
 }
 
-#[macroquad::main(window_conf)]
+#[macroquad::main(config)]
 async fn main() {
     let examples = vec![
         ExampleEntry {
@@ -88,7 +80,7 @@ async fn main() {
         },
     ];
 
-    let mut app = App::new(examples, WIDTH, HEIGHT);
+    let mut app = App::from_screen(examples);
 
     loop {
         app.update();
