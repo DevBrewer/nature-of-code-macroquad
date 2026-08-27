@@ -1,0 +1,19 @@
+[workspace]
+members = [
+  "vec_math",
+  "runner",
+  "chapters/chapter_1_vectors",
+  "chapters/chapter_2_forces",
+  "chapters/chapter_0_randomness",
+  "chapters/chapter_3_oscillation",
+]
+
+resolver = "2"
+
+
+[workspace.dependencies]
+rand = "0.10.2"
+macroquad = "0.4.16"
+
+vec_math = { path = "vec_math" }
+runner = { path = "runner" }
