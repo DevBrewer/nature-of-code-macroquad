@@ -4,7 +4,7 @@ use macroquad::{color::RED, shapes::draw_circle};
 use runner::world_center;
 use vec_math::Vec2;
 
-use crate::mover::Mover;
+use crate::body::Body;
 
 pub struct Attractor {
     pub position: Vec2,
@@ -15,7 +15,7 @@ impl Attractor {
     pub fn new() -> Self {
         Self {
             position: world_center(),
-            mass: 4.0,
+            mass: 10.0,
         }
     }
     // set mass
@@ -30,7 +30,7 @@ impl Attractor {
     /// by this attractor on a mover
     ///
     /// F = G * (m1 * m2)/r*r
-    pub fn attract(&self, mover: &Mover) -> Vec2 {
+    pub fn attract(&self, mover: &Body) -> Vec2 {
         // Direction from mover toward attractor.
         let mut force = self.position - mover.position;
 
@@ -56,6 +56,8 @@ impl Attractor {
     }
 
     pub fn draw(&self) {
-        draw_circle(self.position.x, self.position.y, self.mass, RED);
+        let radius = self.mass * 2.0;
+
+        draw_circle(self.position.x, self.position.y, radius, RED);
     }
 }

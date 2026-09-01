@@ -49,14 +49,14 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] **2.7** Barnes-Hut $O(N \log N)$ Spatial Quadtree Acceleration
 
 ### Chapter 3: Oscillation (`-p chapter_3_oscillation`)
-- [ ] **3.1 — Angles & Rotation**
-  - [ ] Radians vs. Degrees conversion
-  - [ ] Matrix transformations (`rotate()`, `push_matrix`, `pop_matrix`)
-  - [ ] Baton Rotation Exercise
-- [ ] **3.2 — Angular Motion**
-  - [ ] Angular displacement ($\theta$), velocity ($\omega$), and acceleration ($\alpha$)
-  - [ ] Euler-style angular integration ($\theta_{t+1} = \theta_t + \omega$, $\omega_{t+1} = \omega_t + \alpha$)
-  - [ ] Angular forces & Torques
+- [x] **3.1 — Angles & Rotation**
+  - [x] Radians & trigonometric vector rotation
+  - [x] Baton Rotation Simulation (`3.1`)
+- [x] **3.2 — Angular Motion**
+  - [x] Angular displacement ($\theta$), velocity ($\omega$), and acceleration ($\alpha$)
+  - [x] Euler-style angular integration ($\theta_{t+1} = \theta_t + \omega$, $\omega_{t+1} = \omega_t + \alpha$)
+  - [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`3.2.1`)
+  - [x] Force-driven Angular Motion & N-Body Attractor Simulation (`3.2.2`)
 - [ ] **3.x — Harmonic Motion & Oscillations**
   - [ ] Sine & Cosine trig functions
   - [ ] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi f t)$)
