@@ -42,7 +42,7 @@ async fn main() {
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.3",
+            number: "3.2.3",
             title: "Cannonball Simulation with Spin",
             example: Box::new(CannonSimulation::new()),
         },

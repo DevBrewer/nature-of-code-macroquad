@@ -90,6 +90,10 @@ impl App {
             self.clear_canvas = true;
         }
 
+        if is_key_pressed(KeyCode::Q) || is_key_pressed(KeyCode::Escape) {
+            std::process::exit(0);
+        }
+
         // -------------------------
         // Camera
         // -------------------------
@@ -166,7 +170,7 @@ impl App {
         // Navigation hints and counter
         draw_text(
             format!(
-                "[<- / ->] Navigate   [R] Reset   ({}/{})",
+                "[<- / ->] Nav   [R] Reset   [Q / ESC] Quit   ({}/{})",
                 self.current + 1,
                 self.examples.len(),
             ),

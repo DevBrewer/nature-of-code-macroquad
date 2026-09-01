@@ -1,7 +1,7 @@
 use std::f32::consts::PI;
 
 use macroquad::{
-    color::{GRAY, WHITE},
+    color::{GRAY, GREEN, WHITE, YELLOW},
     input::{MouseButton, is_mouse_button_down, is_mouse_button_pressed, is_mouse_button_released},
     shapes::{draw_circle, draw_line},
     time::get_frame_time,
@@ -141,13 +141,25 @@ impl Example for AngularMotion {
         draw_circle(start.x, start.y, 8.0, WHITE);
         draw_circle(end.x, end.y, 8.0, WHITE);
 
+        let angle_deg = (self.angle.to_degrees() % 360.0 + 360.0) % 360.0;
+        let angle_str = format!("Angle (θ): {:.2} rad ({:.1}°)", self.angle, angle_deg);
+        let vel_str = format!("Angular Velocity (ω): {:.2} rad/s", self.angular_velocity);
+        let accel_str = format!("Angular Accel (α): {:.2} rad/s²", self.angular_acceleration);
+        let status_str = if self.dragging {
+            "Status: [MOUSE DRAGGING]"
+        } else {
+            "Status: [FREE SPIN DAMPING]"
+        };
+
         let lines = [
-            ("ANGULAR MOTION", WHITE),
-            ("Angle: radians", GRAY),
-            ("Angular velocity", GRAY),
-            ("Angular acceleration", GRAY),
+            ("EXAMPLE 3.2.1: ANGULAR MOTION", WHITE),
+            ("Click & Drag mouse around center to spin", GREEN),
+            (&angle_str, YELLOW),
+            (&vel_str, YELLOW),
+            (&accel_str, GRAY),
+            (status_str, if self.dragging { GREEN } else { GRAY }),
         ];
 
-        draw_info_panel(10.0, world_height() - 75.0, 230.0, &lines);
+        draw_info_panel(10.0, world_height() - 135.0, 310.0, &lines);
     }
 }
