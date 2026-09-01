@@ -3,12 +3,13 @@ use runner::{App, ExampleEntry, window_conf};
 
 use crate::examples::{
     angle_motion::AngleRotation, angular_motion::AngularMotion,
-    angular_motion_forces::AngularMotionForces,
+    angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
 };
 
 mod angular_mover;
 mod attractor;
 mod body;
+mod cannon_ball;
 mod examples;
 
 const WIDTH: i32 = 600;
@@ -38,6 +39,12 @@ async fn main() {
             number: "3.2.2",
             title: "Angular Motion Force(Arbitary)",
             example: Box::new(AngularMotionForces::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.3",
+            title: "Cannonball Simulation with Spin",
+            example: Box::new(CannonSimulation::new()),
         },
     ];
 

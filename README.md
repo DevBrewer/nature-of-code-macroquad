@@ -57,6 +57,8 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   - [x] Euler-style angular integration ($\theta_{t+1} = \theta_t + \omega$, $\omega_{t+1} = \omega_t + \alpha$)
   - [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`3.2.1`)
   - [x] Force-driven Angular Motion & N-Body Attractor Simulation (`3.2.2`)
+- [x] **3.3 — Exercise 3.3: Cannonball with Spin**
+  - [x] One-time firing impulse force, continuous downward gravity, and initial spin (`3.3`)
 - [ ] **3.x — Harmonic Motion & Oscillations**
   - [ ] Sine & Cosine trig functions
   - [ ] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi f t)$)
