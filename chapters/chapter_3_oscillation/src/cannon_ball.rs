@@ -17,6 +17,7 @@ pub struct CannonBall {
     pub angular_acceleration: f32,
 
     pub radius: f32,
+    pub is_on_ground: bool,
 }
 
 impl CannonBall {
@@ -30,22 +31,93 @@ impl CannonBall {
             angle: 0.0,
             angular_velocity: 0.0,
             angular_acceleration: 0.0,
-            radius: 12.0,
+            radius: 14.0,
+            is_on_ground: false,
         }
     }
 
     /// Applies a linear force (F = ma => a = F/m)
-    pub fn apply_force(&mut self, force: Vec2) {
+    pub fn apply_force(&mut self, mut force: Vec2) {
+        // Normal force N balances downward gravity while on the ground
+        if self.is_on_ground && force.y > 0.0 {
+            force.y = 0.0;
+        }
         self.acceleration += force / self.mass;
     }
 
-    /// Fires the ball with an initial launch force (impulse) and spin
-    pub fn shoot(&mut self, force: Vec2) {
-        // One-time sudden launch force
-        self.apply_force(force);
+    /// Fires the ball with an initial launch impulse (velocity) and spin
+    pub fn shoot(&mut self, impulse: Vec2) {
+        self.velocity = impulse / self.mass;
+        // Initial spin proportional to tangential launch speed
+        self.angular_velocity = impulse.x * 0.02;
+        self.is_on_ground = false;
+    }
 
-        // Give it an initial spin (angular velocity) proportional to launch power
-        self.angular_velocity = force.x * 0.005;
+    /// Apply ground surface friction when in contact with the ground
+    /// friction = -μ * N * v_hat
+    pub fn apply_ground_friction(&mut self, mu: f32, gravity_mag: f32) {
+        if self.is_on_ground {
+            if self.velocity.x.abs() < 1.0 {
+                // Completely stop linear motion and spin when friction brings ball to rest
+                self.velocity = Vec2::ZERO;
+                self.angular_velocity = 0.0;
+            } else {
+                let normal_force = self.mass * gravity_mag;
+                let friction_mag = mu * normal_force;
+                let friction_direction = -self.velocity.x.signum();
+                let friction_force = Vec2::new(friction_direction * friction_mag, 0.0);
+
+                self.apply_force(friction_force);
+
+                // When rolling along the ground, angular velocity couples with linear velocity (v = ω * r)
+                self.angular_velocity = self.velocity.x / self.radius;
+            }
+        }
+    }
+
+    /// Bounce off horizontal ground or ceiling using Coefficient of Restitution
+    pub fn check_ground_and_ceiling(&mut self, ground_y: f32, ceiling_y: f32, restitution: f32) {
+        // Ground Collision
+        if self.position.y >= ground_y - self.radius {
+            self.position.y = ground_y - self.radius;
+
+            if self.velocity.y.abs() > 20.0 {
+                // Bounce back up with energy loss (Coefficient of Restitution)
+                self.velocity.y *= -restitution;
+                // Ground impact torque kick
+                self.angular_velocity += self.velocity.x * 0.03;
+                self.is_on_ground = false;
+            } else {
+                // Stop vertical bouncing and settle on ground for rolling/sliding
+                self.velocity.y = 0.0;
+                self.is_on_ground = true;
+            }
+        } else {
+            self.is_on_ground = false;
+        }
+
+        // Ceiling Collision
+        if self.position.y <= ceiling_y + self.radius {
+            self.position.y = ceiling_y + self.radius;
+            self.velocity.y *= -restitution;
+        }
+    }
+
+    /// Bounce off vertical left and right walls using Coefficient of Restitution
+    pub fn check_walls(&mut self, min_x: f32, max_x: f32, restitution: f32) {
+        // Left Wall
+        if self.position.x <= min_x + self.radius {
+            self.position.x = min_x + self.radius;
+            self.velocity.x *= -restitution;
+            self.angular_velocity *= -restitution;
+        }
+
+        // Right Wall
+        if self.position.x >= max_x - self.radius {
+            self.position.x = max_x - self.radius;
+            self.velocity.x *= -restitution;
+            self.angular_velocity *= -restitution;
+        }
     }
 
     // =======================
@@ -57,27 +129,23 @@ impl CannonBall {
     }
 
     fn update_motion(&mut self, dt: f32) {
-        // Integrate velocity
         self.velocity += self.acceleration * dt;
-
-        // Integrate position
+        if self.is_on_ground {
+            self.velocity.y = 0.0;
+        }
         self.position += self.velocity * dt;
-
-        // Reset acceleration
         self.acceleration = Vec2::ZERO;
     }
 
     fn update_rotation(&mut self, dt: f32) {
-        // Integrate angular velocity
         self.angular_velocity += self.angular_acceleration * dt;
-
-        // Integrate angle
         self.angle += self.angular_velocity * dt;
 
-        // Damping / rotational friction with air
-        self.angular_velocity *= 0.99;
+        // Apply air rotational damping when flying
+        if !self.is_on_ground {
+            self.angular_velocity *= 0.995;
+        }
 
-        // Reset angular acceleration
         self.angular_acceleration = 0.0;
     }
 
@@ -85,7 +153,7 @@ impl CannonBall {
         // Outer body of the cannonball
         draw_circle_lines(self.position.x, self.position.y, self.radius, 2.0, WHITE);
 
-        // Draw rotating crosshair line to visualize rotation (spin)
+        // Draw rotating line crosshair to visualize spin
         let heading = Vec2::new(self.radius, 0.0).rotate(self.angle);
         let start = self.position - heading;
         let end = self.position + heading;
