@@ -58,6 +58,10 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   - [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`3.2.1`)
   - [x] Force-driven Angular Motion & N-Body Attractor Simulation (`3.2.2`)
   - [x] CannonBall with Spin - impulse force, continuous downward gravity, and initial spin (`3.2.3`)
+- [x] **3.3 — Pointing in the Direction of Motion**
+  - [x] Calculating heading orientation angle ($\theta = \text{atan2}(v_y, v_x)$)
+  - [x] Vehicle acceleration toward target mouse position (`3.3`)
+  - [x] Interactive Vehicle Steering Simulation with WASD / Arrow Keys (`Exercise 3.4`)
 - [ ] **3.x — Harmonic Motion & Oscillations**
   - [ ] Sine & Cosine trig functions
   - [ ] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi f t)$)

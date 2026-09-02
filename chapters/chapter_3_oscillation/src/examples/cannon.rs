@@ -108,8 +108,7 @@ impl Example for CannonSimulation {
             let ceiling_y = 0.0;
             self.ball
                 .check_ground_and_ceiling(ground_y, ceiling_y, self.restitution);
-            self.ball
-                .check_walls(0.0, world_width(), self.restitution);
+            self.ball.check_walls(0.0, world_width(), self.restitution);
         }
     }
 
@@ -140,7 +139,10 @@ impl Example for CannonSimulation {
                 draw_circle(preview_pos.x, preview_pos.y, 2.5, YELLOW);
 
                 preview_pos = next_pos;
-                if preview_pos.y >= ground_y || preview_pos.x >= world_width() || preview_pos.x <= 0.0 {
+                if preview_pos.y >= ground_y
+                    || preview_pos.x >= world_width()
+                    || preview_pos.x <= 0.0
+                {
                     break;
                 }
             }
