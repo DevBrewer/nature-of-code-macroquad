@@ -4,7 +4,8 @@ use runner::{App, ExampleEntry, window_conf};
 use crate::examples::{
     angle_motion::AngleRotation, angular_motion::AngularMotion,
     angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
-    direction_motion::DirectionMotion, vehicle_simulation::VehicleSimulation,
+    direction_motion::DirectionMotion, polar_to_cartesian::PolarToCartesian,
+    vehicle_simulation::VehicleSimulation,
 };
 
 mod angular_mover;
@@ -49,15 +50,21 @@ async fn main() {
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.3",
+            number: "3.3.1",
             title: "Point in the direction of Motion",
             example: Box::new(DirectionMotion::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.4",
+            number: "3.3.2",
             title: "Exercise 3.4: Vehicle Steering Simulation",
             example: Box::new(VehicleSimulation::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.4",
+            title: "Polar to Cartesian Coordinates",
+            example: Box::new(PolarToCartesian::new()),
         },
     ];
 

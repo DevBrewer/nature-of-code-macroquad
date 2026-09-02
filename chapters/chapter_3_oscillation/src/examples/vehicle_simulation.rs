@@ -195,7 +195,7 @@ impl Example for VehicleSimulation {
             speed, self.vehicle.top_speed
         );
         let heading_str = format!(
-            "Heading (angle): {:.2} rad ({:.1}°)",
+            "Heading (angle): {:.2} rad ({:.1} deg)",
             self.vehicle.angle, angle_deg
         );
 

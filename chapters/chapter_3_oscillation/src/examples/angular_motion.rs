@@ -142,9 +142,9 @@ impl Example for AngularMotion {
         draw_circle(end.x, end.y, 8.0, WHITE);
 
         let angle_deg = (self.angle.to_degrees() % 360.0 + 360.0) % 360.0;
-        let angle_str = format!("Angle (θ): {:.2} rad ({:.1}°)", self.angle, angle_deg);
-        let vel_str = format!("Angular Velocity (ω): {:.2} rad/s", self.angular_velocity);
-        let accel_str = format!("Angular Accel (α): {:.2} rad/s²", self.angular_acceleration);
+        let angle_str = format!("Angle (theta): {:.2} rad ({:.1} deg)", self.angle, angle_deg);
+        let vel_str = format!("Angular Velocity (w): {:.2} rad/s", self.angular_velocity);
+        let accel_str = format!("Angular Accel (a): {:.2} rad/s^2", self.angular_acceleration);
         let status_str = if self.dragging {
             "Status: [MOUSE DRAGGING]"
         } else {

@@ -62,6 +62,9 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   - [x] Calculating heading orientation angle ($\theta = \text{atan2}(v_y, v_x)$)
   - [x] Vehicle acceleration toward target mouse position (`3.3`)
   - [x] Interactive Vehicle Steering Simulation with WASD / Arrow Keys (`Exercise 3.4`)
+- [x] **3.4 — Polar vs. Cartesian Coordinates**
+  - [x] Polar $(r, \theta)$ to Cartesian $(x, y)$ conversion ($x = r \cdot \cos(\theta)$, $y = r \cdot \sin(\theta)$)
+  - [x] Simple Polar to Cartesian simulation (`Example 3.4`)
 - [ ] **3.x — Harmonic Motion & Oscillations**
   - [ ] Sine & Cosine trig functions
   - [ ] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi f t)$)

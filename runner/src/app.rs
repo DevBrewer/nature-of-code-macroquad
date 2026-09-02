@@ -71,6 +71,7 @@ impl App {
             self.current = (self.current + 1) % self.examples.len();
 
             self.examples[self.current].example.reset();
+            crate::render::reset_info_panel_offset();
             self.clear_canvas = true;
         }
 
@@ -82,11 +83,13 @@ impl App {
             };
 
             self.examples[self.current].example.reset();
+            crate::render::reset_info_panel_offset();
             self.clear_canvas = true;
         }
 
         if is_key_pressed(KeyCode::R) {
             self.examples[self.current].example.reset();
+            crate::render::reset_info_panel_offset();
             self.clear_canvas = true;
         }
 

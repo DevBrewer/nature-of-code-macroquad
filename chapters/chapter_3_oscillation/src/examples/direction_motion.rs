@@ -129,7 +129,7 @@ impl Example for DirectionMotion {
             "Speed: {:.1} px/s (Max: {:.0})",
             speed, self.mover.top_speed
         );
-        let heading_str = format!("Heading (angle): ({:.1}°)", self.mover.angle);
+        let heading_str = format!("Heading (angle): ({:.1} deg)", self.mover.angle);
 
         let lines = [
             ("EXAMPLE 3.3: POINTING IN DIRECTION OF MOTION", WHITE),

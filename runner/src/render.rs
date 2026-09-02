@@ -1,19 +1,28 @@
 use macroquad::{
     color::{Color, GRAY},
-    input::{MouseButton, is_mouse_button_down, is_mouse_button_pressed, is_mouse_button_released, mouse_position},
+    input::{MouseButton, is_mouse_button_down, is_mouse_button_pressed, is_mouse_button_released},
     shapes::{draw_line, draw_rectangle, draw_rectangle_lines},
     text::draw_text,
 };
 
 use vec_math::Vec2;
 
-use crate::camera::{world_height, world_width};
+use crate::camera::{mouse_world_position, world_height, world_width};
 
 static mut PANEL_OFFSET_X: f32 = 0.0;
 static mut PANEL_OFFSET_Y: f32 = 0.0;
 static mut IS_DRAGGING_PANEL: bool = false;
 static mut DRAG_START_MOUSE: (f32, f32) = (0.0, 0.0);
 static mut DRAG_START_OFFSET: (f32, f32) = (0.0, 0.0);
+
+/// Resets the HUD info panel drag position to default (0, 0).
+pub fn reset_info_panel_offset() {
+    unsafe {
+        PANEL_OFFSET_X = 0.0;
+        PANEL_OFFSET_Y = 0.0;
+        IS_DRAGGING_PANEL = false;
+    }
+}
 
 pub fn draw_axes() {
     let w = world_width();
@@ -72,15 +81,24 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
     let padding_y = 8.0;
     let height = lines.len() as f32 * line_height + padding_y * 2.0;
 
-    let (mx, my) = mouse_position();
+    // Convert mouse to world space coordinates matching Camera2D canvas
+    let m_world = mouse_world_position();
+    let mx = m_world.x;
+    let my = m_world.y;
 
     unsafe {
-        let current_draw_x = x + PANEL_OFFSET_X;
-        let current_draw_y = y + PANEL_OFFSET_Y;
+        let max_x = (world_width() - width - 5.0).max(5.0);
+        let max_y = (world_height() - height - 5.0).max(5.0);
+
+        let unclamped_x = x + PANEL_OFFSET_X;
+        let unclamped_y = y + PANEL_OFFSET_Y;
+
+        let panel_x = unclamped_x.clamp(5.0, max_x);
+        let panel_y = unclamped_y.clamp(5.0, max_y);
 
         // Check for Mouse Dragging on Info Panel
         if is_mouse_button_pressed(MouseButton::Left) {
-            if mx >= current_draw_x && mx <= current_draw_x + width && my >= current_draw_y && my <= current_draw_y + height {
+            if mx >= panel_x && mx <= panel_x + width && my >= panel_y && my <= panel_y + height {
                 IS_DRAGGING_PANEL = true;
                 DRAG_START_MOUSE = (mx, my);
                 DRAG_START_OFFSET = (PANEL_OFFSET_X, PANEL_OFFSET_Y);
@@ -100,9 +118,6 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
             IS_DRAGGING_PANEL = false;
         }
 
-        let panel_x = x + PANEL_OFFSET_X;
-        let panel_y = y + PANEL_OFFSET_Y;
-
         // Drop shadow for depth
         draw_rectangle(panel_x + 3.0, panel_y + 3.0, width, height, Color::new(0.0, 0.0, 0.0, 0.35));
 
@@ -121,7 +136,7 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
         draw_rectangle_lines(panel_x, panel_y, width, height, 1.2, border_color);
 
         // Move handle hint icon in top right
-        draw_text("::: Move", panel_x + width - 54.0, panel_y + 13.0, 11.0, Color::new(0.50, 0.60, 0.75, 0.60));
+        draw_text("[Move]", panel_x + width - 50.0, panel_y + 13.0, 11.0, Color::new(0.50, 0.60, 0.75, 0.60));
 
         for (i, (text, color)) in lines.iter().enumerate() {
             let text_y = panel_y + padding_y + (i as f32 + 1.0) * line_height - 3.0;

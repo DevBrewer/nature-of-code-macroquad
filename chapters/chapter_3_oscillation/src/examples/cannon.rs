@@ -175,9 +175,9 @@ impl Example for CannonSimulation {
         };
 
         let power_str = format!("Power: {:.0} px/s [W/S / UP/DOWN]", self.launch_speed);
-        let angle_str = format!("Angle: {:.0}° [A/D]", self.launch_angle_deg);
+        let angle_str = format!("Angle: {:.0} deg [A/D]", self.launch_angle_deg);
         let bounce_str = format!("Restitution (cr): {:.2}", self.restitution);
-        let friction_str = format!("Friction (μ): {:.2}", self.friction_coef);
+        let friction_str = format!("Friction (mu): {:.2}", self.friction_coef);
         let speed_str = format!("Speed: {:.1} px/s", current_speed);
         let spin_str = format!("Spin: {:.2} rad/s", current_spin);
 
