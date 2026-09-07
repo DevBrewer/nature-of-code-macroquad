@@ -4,8 +4,8 @@ use runner::{App, ExampleEntry, window_conf};
 use crate::examples::{
     angle_motion::AngleRotation, angular_motion::AngularMotion,
     angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
-    direction_motion::DirectionMotion, polar_to_cartesian::PolarToCartesian,
-    vehicle_simulation::VehicleSimulation,
+    direction_motion::DirectionMotion, oscillation::OscillationExample,
+    polar_to_cartesian::PolarToCartesian, shm::ShmExample, vehicle_simulation::VehicleSimulation,
 };
 
 mod angular_mover;
@@ -65,6 +65,18 @@ async fn main() {
             number: "3.4",
             title: "Polar to Cartesian Coordinates",
             example: Box::new(PolarToCartesian::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.4.1",
+            title: "Polar Oscillation",
+            example: Box::new(OscillationExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.5.1",
+            title: "Simple Harmonic Motion",
+            example: Box::new(ShmExample::new()),
         },
     ];
 

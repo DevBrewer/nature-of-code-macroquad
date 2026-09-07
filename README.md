@@ -64,11 +64,12 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   - [x] Interactive Vehicle Steering Simulation with WASD / Arrow Keys (`Exercise 3.4`)
 - [x] **3.4 — Polar vs. Cartesian Coordinates**
   - [x] Polar $(r, \theta)$ to Cartesian $(x, y)$ conversion ($x = r \cdot \cos(\theta)$, $y = r \cdot \sin(\theta)$)
-  - [x] Simple Polar to Cartesian simulation (`Example 3.4`)
-- [ ] **3.x — Harmonic Motion & Oscillations**
-  - [ ] Sine & Cosine trig functions
-  - [ ] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi f t)$)
-  - [ ] Simple Harmonic Motion (SHM)
+  - [x] Interactive Polar to Cartesian simulation (`Example 3.4`)
+  - [x] Polar Oscillation circular motion (`Example 3.4.1`)
+- [x] **3.5 — Harmonic Motion & Oscillations**
+  - [x] Sine & Cosine trigonometric functions
+  - [x] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi t / \text{period})$)
+  - [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5.1`)
   - [ ] `Oscillator` struct & independent X/Y oscillations (Lissajous curves)
   - [ ] Varying Amplitudes & Angular Velocities
 - [ ] **Waves**
