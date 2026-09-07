@@ -6,4 +6,5 @@ pub mod direction_motion;
 pub mod oscillation;
 pub mod polar_to_cartesian;
 pub mod shm;
+pub mod shm2;
 pub mod vehicle_simulation;

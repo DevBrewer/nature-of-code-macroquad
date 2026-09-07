@@ -5,7 +5,8 @@ use crate::examples::{
     angle_motion::AngleRotation, angular_motion::AngularMotion,
     angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
     direction_motion::DirectionMotion, oscillation::OscillationExample,
-    polar_to_cartesian::PolarToCartesian, shm::ShmExample, vehicle_simulation::VehicleSimulation,
+    polar_to_cartesian::PolarToCartesian, shm::ShmExample, shm2::Shm2Example,
+    vehicle_simulation::VehicleSimulation,
 };
 
 mod angular_mover;
@@ -77,6 +78,12 @@ async fn main() {
             number: "3.5.1",
             title: "Simple Harmonic Motion",
             example: Box::new(ShmExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.5.1",
+            title: "Simple Harmonic Motion II",
+            example: Box::new(Shm2Example::new()),
         },
     ];
 
