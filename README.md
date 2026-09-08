@@ -71,9 +71,10 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   - [x] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi t / \text{period})$)
   - [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5`)
   - [x] SHM with Angular Velocity (`Example 3.6`)
-  - [x] Spring Bob simulation using `map()` (`Exercise 3.7`)
-  - [x] `Oscillator` struct & independent X/Y oscillations (Lissajous curves) (`Example 3.8`)
-  - [ ] Varying Amplitudes & Angular Velocities
+  - [x] Spring Bob simulation using `map()` (`Exercise 3.7.0`)
+  - [x] `Oscillator` struct & independent X/Y oscillations (`Example 3.7.1`)
+  - [x] Radial Petals: Structured Amplitudes & Phase Offsets (`Exercise 3.8`)
+  - [x] Accelerating Oscillator & Insect Legs Locomotion (`Exercise 3.9`)
 - [ ] **Waves**
   - [ ] Static Sine Wave plot
   - [ ] Animated Wave simulation
