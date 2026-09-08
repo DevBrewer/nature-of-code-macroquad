@@ -2,11 +2,13 @@ use macroquad::window::{Conf, next_frame};
 use runner::{App, ExampleEntry, window_conf};
 
 use crate::examples::{
+    accelerating_oscillator::AcceleratingOscillatorExample,
     angle_motion::AngleRotation, angular_motion::AngularMotion,
     angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
     direction_motion::DirectionMotion, oscillation::OscillationExample,
-    polar_to_cartesian::PolarToCartesian, shm::ShmExample, shm2::Shm2Example,
-    vehicle_simulation::VehicleSimulation,
+    oscillator_objects::OscillatorObjectExample, polar_to_cartesian::PolarToCartesian,
+    radial_petals::RadialPetalExample, shm::ShmExample, shm2::Shm2Example,
+    spring_bob::SpringForces, vehicle_simulation::VehicleSimulation,
 };
 
 mod angular_mover;
@@ -14,7 +16,7 @@ mod attractor;
 mod body;
 mod cannon_ball;
 mod examples;
-
+mod oscillator;
 const WIDTH: i32 = 600;
 const HEIGHT: i32 = 600;
 
@@ -75,15 +77,39 @@ async fn main() {
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.5.1",
+            number: "3.5",
             title: "Simple Harmonic Motion",
             example: Box::new(ShmExample::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.5.1",
+            number: "3.6",
             title: "Simple Harmonic Motion II",
             example: Box::new(Shm2Example::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.7.0",
+            title: "Exercise: Spring Forces using Map",
+            example: Box::new(SpringForces::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.7.1",
+            title: "Oscillator Ojbects",
+            example: Box::new(OscillatorObjectExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.8",
+            title: "Exercise Radial Petals",
+            example: Box::new(RadialPetalExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.9",
+            title: "Exercise 3.9: Accelerating Oscillator (Insect Legs)",
+            example: Box::new(AcceleratingOscillatorExample::new()),
         },
     ];
 

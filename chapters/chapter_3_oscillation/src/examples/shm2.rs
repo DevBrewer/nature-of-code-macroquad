@@ -24,8 +24,6 @@ pub struct Shm2Example {
     pub angle_velocity: f32,
     /// Equilibrium anchor point (center of oscillation)
     pub origin: Vec2,
-    /// Elapsed frame counter (scaled by delta time)
-    pub frame_count: f32,
 }
 
 impl Shm2Example {
@@ -37,7 +35,6 @@ impl Shm2Example {
             amplitude: 150.0,
             angle: 0.0,
             angle_velocity: 0.05,
-            frame_count: 0.0,
             origin: Vec2::new(center.x, center.y),
         }
     }

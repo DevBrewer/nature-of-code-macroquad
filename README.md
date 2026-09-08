@@ -69,8 +69,10 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] **3.5 — Harmonic Motion & Oscillations**
   - [x] Sine & Cosine trigonometric functions
   - [x] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi t / \text{period})$)
-  - [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5.1`)
-  - [ ] `Oscillator` struct & independent X/Y oscillations (Lissajous curves)
+  - [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5`)
+  - [x] SHM with Angular Velocity (`Example 3.6`)
+  - [x] Spring Bob simulation using `map()` (`Exercise 3.7`)
+  - [x] `Oscillator` struct & independent X/Y oscillations (Lissajous curves) (`Example 3.8`)
   - [ ] Varying Amplitudes & Angular Velocities
 - [ ] **Waves**
   - [ ] Static Sine Wave plot
