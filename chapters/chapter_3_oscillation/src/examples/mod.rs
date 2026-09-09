@@ -1,4 +1,5 @@
 pub mod accelerating_oscillator;
+pub mod additive_waves;
 pub mod angle_motion;
 pub mod angular_motion;
 pub mod angular_motion_forces;
@@ -11,4 +12,5 @@ pub mod radial_petals;
 pub mod shm;
 pub mod shm2;
 pub mod spring_bob;
+pub mod static_wave;
 pub mod vehicle_simulation;

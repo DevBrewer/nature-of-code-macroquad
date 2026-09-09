@@ -21,9 +21,9 @@ fn lerp(a: f32, b: f32, t: f32) -> f32 {
 /// Gradient contribution from a lattice point.
 /// grad_1dient of either -1 or +1
 fn grad_1d(hash: u32, x: f32) -> f32 {
-    let grad_1dient = if hash & 1 == 0 { 1.0 } else { -1.0 };
+    let gradient = if hash & 1 == 0 { 1.0 } else { -1.0 };
 
-    grad_1dient * x
+    gradient * x
 }
 
 // Return one of eight possible 2D gradient directions.

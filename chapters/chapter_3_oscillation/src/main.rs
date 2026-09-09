@@ -2,13 +2,14 @@ use macroquad::window::{Conf, next_frame};
 use runner::{App, ExampleEntry, window_conf};
 
 use crate::examples::{
-    accelerating_oscillator::AcceleratingOscillatorExample,
+    accelerating_oscillator::AcceleratingOscillatorExample, additive_waves::AdditiveWavesExample,
     angle_motion::AngleRotation, angular_motion::AngularMotion,
     angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
     direction_motion::DirectionMotion, oscillation::OscillationExample,
     oscillator_objects::OscillatorObjectExample, polar_to_cartesian::PolarToCartesian,
     radial_petals::RadialPetalExample, shm::ShmExample, shm2::Shm2Example,
-    spring_bob::SpringForces, vehicle_simulation::VehicleSimulation,
+    spring_bob::SpringForces, static_wave::StaticWaveExample,
+    vehicle_simulation::VehicleSimulation,
 };
 
 mod angular_mover;
@@ -110,6 +111,18 @@ async fn main() {
             number: "3.9",
             title: "Exercise 3.9: Accelerating Oscillator (Insect Legs)",
             example: Box::new(AcceleratingOscillatorExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.8",
+            title: "Static Wave",
+            example: Box::new(StaticWaveExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "3.12",
+            title: "Exercise 3.12: Additive Waves",
+            example: Box::new(AdditiveWavesExample::new()),
         },
     ];
 
