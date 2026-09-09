@@ -75,11 +75,11 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   - [x] `Oscillator` struct & independent X/Y oscillations (`Example 3.7.1`)
   - [x] Radial Petals: Structured Amplitudes & Phase Offsets (`Exercise 3.8`)
   - [x] Accelerating Oscillator & Insect Legs Locomotion (`Exercise 3.9`)
-- [ ] **Waves**
-  - [ ] Static Sine Wave plot
-  - [ ] Animated Wave simulation
-  - [ ] Wavelength ($\lambda$) & Phase shift ($\phi$)
-  - [ ] Additive Waves (wave superposition)
+- [x] **3.6 — Waves & Superposition**
+  - [x] Static Sine Wave spatial plot (`Example 3.8`)
+  - [x] Dynamic Animated Wave simulation with time progression (`Example 3.9`)
+  - [x] Wavelength ($\lambda$), angular frequency ($\Delta\text{angle}$), & phase shift ($\phi$)
+  - [x] Additive Waves: Superposition of multiple sinusoidal waves with multi-stop color gradient (`Exercise 3.12`)
 - [ ] **Spring Forces & Dynamics**
   - [ ] Hooke's Law ($F_s = -k x$)
   - [ ] Spring + Bob physics system
