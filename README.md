@@ -20,7 +20,9 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 
 ## 📊 Progress & Topic Checklist
 
-### Chapter 0: Randomness (`-p chapter_0_randomness`)
+<details>
+<summary><b>Chapter 0: Randomness</b> (<code>-p chapter_0_randomness</code>) — <i>8/8 Complete</i></summary>
+
 - [x] **0.1** Standard 4-way & 8-way Random Walkers
 - [x] **0.2** Biased & Rightward Tendency Random Walkers
 - [x] **0.3** Uniform Random Distribution Visualization
@@ -30,7 +32,11 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] **0.7** 2D Perlin Noise Terrain / Smooth Surface Generation
 - [x] **0.8** Smooth Perlin Noise Walker
 
-### Chapter 1: Vectors (`-p chapter_1_vectors`)
+</details>
+
+<details>
+<summary><b>Chapter 1: Vectors</b> (<code>-p chapter_1_vectors</code>) — <i>7/7 Complete</i></summary>
+
 - [x] **1.1** Bouncing Ball (Scalar vs. Vector implementation)
 - [x] **1.2** Vector Operations (Addition, Subtraction, Multiplication, Division)
 - [x] **1.3** Vector Magnitude & Normalization ($\hat{v}$)
@@ -39,7 +45,11 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] **1.6** Motion 101: Acceleration Integration ($V_{t+1} = V_t + A$)
 - [x] **1.7** Motion 101: Random & Mouse-Attracted Acceleration
 
-### Chapter 2: Forces (`-p chapter_2_forces`)
+</details>
+
+<details>
+<summary><b>Chapter 2: Forces</b> (<code>-p chapter_2_forces</code>) — <i>7/7 Complete</i></summary>
+
 - [x] **2.1** Force Accumulation & Newton's Second Law ($\Sigma F = m a$)
 - [x] **2.2** Mass Scaling & Gravity Simulation
 - [x] **2.3** Friction Forces ($f = -\mu N \hat{v}$)
@@ -48,43 +58,80 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] **2.6** Mutual N-Body Gravitational Attraction
 - [x] **2.7** Barnes-Hut $O(N \log N)$ Spatial Quadtree Acceleration
 
+</details>
+
 ### Chapter 3: Oscillation (`-p chapter_3_oscillation`)
-- [x] **3.1 — Angles & Rotation**
-  - [x] Radians & trigonometric vector rotation
-  - [x] Baton Rotation Simulation (`3.1`)
-- [x] **3.2 — Angular Motion**
-  - [x] Angular displacement ($\theta$), velocity ($\omega$), and acceleration ($\alpha$)
-  - [x] Euler-style angular integration ($\theta_{t+1} = \theta_t + \omega$, $\omega_{t+1} = \omega_t + \alpha$)
-  - [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`3.2.1`)
-  - [x] Force-driven Angular Motion & N-Body Attractor Simulation (`3.2.2`)
-  - [x] CannonBall with Spin - impulse force, continuous downward gravity, and initial spin (`3.2.3`)
-- [x] **3.3 — Pointing in the Direction of Motion**
-  - [x] Calculating heading orientation angle ($\theta = \text{atan2}(v_y, v_x)$)
-  - [x] Vehicle acceleration toward target mouse position (`3.3`)
-  - [x] Interactive Vehicle Steering Simulation with WASD / Arrow Keys (`Exercise 3.4`)
-- [x] **3.4 — Polar vs. Cartesian Coordinates**
-  - [x] Polar $(r, \theta)$ to Cartesian $(x, y)$ conversion ($x = r \cdot \cos(\theta)$, $y = r \cdot \sin(\theta)$)
-  - [x] Interactive Polar to Cartesian simulation (`Example 3.4`)
-  - [x] Polar Oscillation circular motion (`Example 3.4.1`)
-- [x] **3.5 — Harmonic Motion & Oscillations**
-  - [x] Sine & Cosine trigonometric functions
-  - [x] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi t / \text{period})$)
-  - [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5`)
-  - [x] SHM with Angular Velocity (`Example 3.6`)
-  - [x] Spring Bob simulation using `map()` (`Exercise 3.7.0`)
-  - [x] `Oscillator` struct & independent X/Y oscillations (`Example 3.7.1`)
-  - [x] Radial Petals: Structured Amplitudes & Phase Offsets (`Exercise 3.8`)
-  - [x] Accelerating Oscillator & Insect Legs Locomotion (`Exercise 3.9`)
-- [x] **3.6 — Waves & Superposition**
-  - [x] Static Sine Wave spatial plot (`Example 3.8`)
-  - [x] Dynamic Animated Wave simulation with time progression (`Example 3.9`)
-  - [x] Wavelength ($\lambda$), angular frequency ($\Delta\text{angle}$), & phase shift ($\phi$)
-  - [x] Additive Waves: Superposition of multiple sinusoidal waves with multi-stop color gradient (`Exercise 3.12`)
-- [ ] **Spring Forces & Dynamics**
-  - [ ] Hooke's Law ($F_s = -k x$)
-  - [ ] Spring + Bob physics system
-  - [ ] Gravity + Spring equilibrium physics
-  - [ ] Inclined-Plane exercise (Vector breakdown + Friction + Gravity)
+
+<details>
+<summary><b>3.1 — Angles & Rotation</b></summary>
+
+- [x] Radians & trigonometric vector rotation
+- [x] Baton Rotation Simulation (`3.1`)
+
+</details>
+
+<details>
+<summary><b>3.2 — Angular Motion</b></summary>
+
+- [x] Angular displacement ($\theta$), velocity ($\omega$), and acceleration ($\alpha$)
+- [x] Euler-style angular integration ($\theta_{t+1} = \theta_t + \omega$, $\omega_{t+1} = \omega_t + \alpha$)
+- [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`3.2.1`)
+- [x] Force-driven Angular Motion & N-Body Attractor Simulation (`3.2.2`)
+- [x] CannonBall with Spin - impulse force, continuous downward gravity, and initial spin (`3.2.3`)
+
+</details>
+
+<details>
+<summary><b>3.3 — Pointing in the Direction of Motion</b></summary>
+
+- [x] Calculating heading orientation angle ($\theta = \text{atan2}(v_y, v_x)$)
+- [x] Vehicle acceleration toward target mouse position (`3.3`)
+- [x] Interactive Vehicle Steering Simulation with WASD / Arrow Keys (`Exercise 3.4`)
+
+</details>
+
+<details>
+<summary><b>3.4 — Polar vs. Cartesian Coordinates</b></summary>
+
+- [x] Polar $(r, \theta)$ to Cartesian $(x, y)$ conversion ($x = r \cdot \cos(\theta)$, $y = r \cdot \sin(\theta)$)
+- [x] Interactive Polar to Cartesian simulation (`Example 3.4`)
+- [x] Polar Oscillation circular motion (`Example 3.4.1`)
+
+</details>
+
+<details>
+<summary><b>3.5 — Harmonic Motion & Oscillations</b></summary>
+
+- [x] Sine & Cosine trigonometric functions
+- [x] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi t / \text{period})$)
+- [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5`)
+- [x] SHM with Angular Velocity (`Example 3.6`)
+- [x] Spring Bob simulation using `map()` (`Exercise 3.7.0`)
+- [x] `Oscillator` struct & independent X/Y oscillations (`Example 3.7.1`)
+- [x] Radial Petals: Structured Amplitudes & Phase Offsets (`Exercise 3.8`)
+- [x] Accelerating Oscillator & Insect Legs Locomotion (`Exercise 3.9`)
+
+</details>
+
+<details open>
+<summary><b>3.6 — Waves & Superposition</b></summary>
+
+- [x] Static Sine Wave spatial plot (`Example 3.8`)
+- [x] Dynamic Animated Wave simulation with time progression (`Example 3.9`)
+- [x] Wavelength ($\lambda$), angular frequency ($\Delta\text{angle}$), & phase shift ($\phi$)
+- [x] Additive Waves: Superposition of multiple sinusoidal waves with multi-stop color gradient (`Exercise 3.12`)
+
+</details>
+
+<details open>
+<summary><b>3.7 — Spring Forces & Dynamics</b> (Upcoming)</summary>
+
+- [ ] Hooke's Law ($F_s = -k x$)
+- [ ] Spring + Bob physics system
+- [ ] Gravity + Spring equilibrium physics
+- [ ] Inclined-Plane exercise (Vector breakdown + Friction + Gravity)
+
+</details>
 
 ---
 
@@ -112,6 +159,6 @@ When the simulation window opens, use the built-in runner controls:
 
 ## 🛠️ Tech Stack
 
-* **Language:** [Rust (2021 Edition)](https://www.rust-lang.org/)
+* **Language:** [Rust (2024 Edition)](https://www.rust-lang.org/)
 * **Graphics & Windowing:** [Macroquad](https://macroquad.rs/)
 * **Source Material:** [The Nature of Code](https://natureofcode.com/) by Daniel Shiffman
