@@ -1,16 +1,10 @@
-pub mod accelerating_oscillator;
-pub mod additive_waves;
 pub mod angle_motion;
-pub mod angular_motion;
 pub mod angular_motion_forces;
-pub mod cannon;
 pub mod direction_motion;
 pub mod oscillation;
 pub mod oscillator_objects;
 pub mod polar_to_cartesian;
-pub mod radial_petals;
 pub mod shm;
 pub mod shm2;
-pub mod spring_bob;
+pub mod spring_forces;
 pub mod static_wave;
-pub mod vehicle_simulation;

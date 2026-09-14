@@ -76,9 +76,9 @@ pub fn sample_gradient(t: f32) -> Color {
     let t = t.clamp(0.0, 1.0);
 
     const C0: Color = Color::new(139.0 / 255.0, 172.0 / 255.0, 246.0 / 255.0, 1.0);
-    const C1: Color = Color::new(255.0 / 255.0, 255.0 / 255.0, 249.0 / 255.0, 1.0);
-    const C2: Color = Color::new(255.0 / 255.0, 253.0 / 255.0, 147.0 / 255.0, 1.0);
-    const C3: Color = Color::new(255.0 / 255.0, 181.0 / 255.0, 68.0 / 255.0, 1.0);
+    const C1: Color = Color::new(1.0, 1.0, 249.0 / 255.0, 1.0);
+    const C2: Color = Color::new(1.0, 253.0 / 255.0, 147.0 / 255.0, 1.0);
+    const C3: Color = Color::new(1.0, 181.0 / 255.0, 68.0 / 255.0, 1.0);
 
     if t <= 0.33 {
         let factor = t / 0.33;

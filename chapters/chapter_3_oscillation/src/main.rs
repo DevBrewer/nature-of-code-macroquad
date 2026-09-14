@@ -1,15 +1,20 @@
 use macroquad::window::{Conf, next_frame};
 use runner::{App, ExampleEntry, window_conf};
 
-use crate::examples::{
-    accelerating_oscillator::AcceleratingOscillatorExample, additive_waves::AdditiveWavesExample,
-    angle_motion::AngleRotation, angular_motion::AngularMotion,
-    angular_motion_forces::AngularMotionForces, cannon::CannonSimulation,
-    direction_motion::DirectionMotion, oscillation::OscillationExample,
-    oscillator_objects::OscillatorObjectExample, polar_to_cartesian::PolarToCartesian,
-    radial_petals::RadialPetalExample, shm::ShmExample, shm2::Shm2Example,
-    spring_bob::SpringForces, static_wave::StaticWaveExample,
-    vehicle_simulation::VehicleSimulation,
+use crate::{
+    examples::{
+        angle_motion::AngleRotation, angular_motion_forces::AngularMotionForces,
+        direction_motion::DirectionMotion, oscillation::OscillationExample,
+        oscillator_objects::OscillatorObjectExample, polar_to_cartesian::PolarToCartesian,
+        shm::ShmExample, shm2::Shm2Example, spring_forces::SpringForceExample,
+        static_wave::StaticWaveExample,
+    },
+    exercises::{
+        accelerating_oscillator::AcceleratingOscillatorExample,
+        additive_waves::AdditiveWavesExample, angular_motion::AngularMotion,
+        cannon::CannonSimulation, radial_petals::RadialPetalExample, spring_bob::SpringForces,
+        vehicle_simulation::VehicleSimulation,
+    },
 };
 
 mod angular_mover;
@@ -17,7 +22,9 @@ mod attractor;
 mod body;
 mod cannon_ball;
 mod examples;
+mod exercises;
 mod oscillator;
+mod spring;
 const WIDTH: i32 = 600;
 const HEIGHT: i32 = 600;
 
@@ -30,99 +37,105 @@ async fn main() {
     let examples = vec![
         ExampleEntry {
             chapter: 3,
-            number: "3.1",
-            title: "Angle Motion",
+            number: "Example 3.1",
+            title: "Angular Motion Using rotate()",
             example: Box::new(AngleRotation::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.2.1",
-            title: "Angular Motion",
+            number: "Exercise 3.2",
+            title: "Interactive Baton Drag & Damping",
             example: Box::new(AngularMotion::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.2.2",
-            title: "Angular Motion Force(Arbitary)",
+            number: "Example 3.2",
+            title: "Forces with (Arbitrary) Angular Motion",
             example: Box::new(AngularMotionForces::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.2.3",
+            number: "Exercise 3.3",
             title: "Cannonball Simulation with Spin",
             example: Box::new(CannonSimulation::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.3.1",
-            title: "Point in the direction of Motion",
+            number: "Example 3.3",
+            title: "Pointing in the Direction of Motion",
             example: Box::new(DirectionMotion::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.3.2",
-            title: "Exercise 3.4: Vehicle Steering Simulation",
+            number: "Exercise 3.4",
+            title: "Vehicle Steering Simulation",
             example: Box::new(VehicleSimulation::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.4",
+            number: "Example 3.4",
             title: "Polar to Cartesian Coordinates",
             example: Box::new(PolarToCartesian::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.4.1",
+            number: "Example 3.4b",
             title: "Polar Oscillation",
             example: Box::new(OscillationExample::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.5",
-            title: "Simple Harmonic Motion",
+            number: "Example 3.5",
+            title: "Simple Harmonic Motion I",
             example: Box::new(ShmExample::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.6",
+            number: "Example 3.6",
             title: "Simple Harmonic Motion II",
             example: Box::new(Shm2Example::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.7.0",
-            title: "Exercise: Spring Forces using Map",
+            number: "Exercise 3.7",
+            title: "Spring Bob Simulation using sin() and map()",
             example: Box::new(SpringForces::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.7.1",
-            title: "Oscillator Ojbects",
+            number: "Example 3.7",
+            title: "Oscillator Objects",
             example: Box::new(OscillatorObjectExample::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.8",
-            title: "Exercise Radial Petals",
+            number: "Exercise 3.8",
+            title: "Radial Petals / Oscillator Pattern",
             example: Box::new(RadialPetalExample::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.9",
-            title: "Exercise 3.9: Accelerating Oscillator (Insect Legs)",
-            example: Box::new(AcceleratingOscillatorExample::new()),
-        },
-        ExampleEntry {
-            chapter: 3,
-            number: "3.8",
+            number: "Example 3.8",
             title: "Static Wave",
             example: Box::new(StaticWaveExample::new()),
         },
         ExampleEntry {
             chapter: 3,
-            number: "3.12",
-            title: "Exercise 3.12: Additive Waves",
+            number: "Exercise 3.9",
+            title: "Accelerating Oscillator (Insect Legs)",
+            example: Box::new(AcceleratingOscillatorExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "Exercise 3.12",
+            title: "Additive Waves",
             example: Box::new(AdditiveWavesExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "Example 3.10",
+            title: "A Spring Connection (Hooke's Law)",
+            example: Box::new(SpringForceExample::new()),
         },
     ];
 

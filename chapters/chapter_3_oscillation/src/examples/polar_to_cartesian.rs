@@ -20,7 +20,7 @@ use vec_math::Vec2;
 /// Cartesian coordinates define position using:
 /// - `x = r * cos(theta)`
 /// - `y = r * sin(theta)`
-/// Or equivalently using vector math: `position = origin + Vec2::from_angle(theta) * r`
+///   Or equivalently using vector math: `position = origin + Vec2::from_angle(theta) * r`
 pub struct PolarToCartesian {
     radius: f32,
     theta: f32,

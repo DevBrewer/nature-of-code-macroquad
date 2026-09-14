@@ -66,7 +66,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 <summary><b>3.1 — Angles & Rotation</b></summary>
 
 - [x] Radians & trigonometric vector rotation
-- [x] Baton Rotation Simulation (`3.1`)
+- [x] Baton Rotation Simulation (`Example 3.1`)
 
 </details>
 
@@ -75,9 +75,9 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 
 - [x] Angular displacement ($\theta$), velocity ($\omega$), and acceleration ($\alpha$)
 - [x] Euler-style angular integration ($\theta_{t+1} = \theta_t + \omega$, $\omega_{t+1} = \omega_t + \alpha$)
-- [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`3.2.1`)
-- [x] Force-driven Angular Motion & N-Body Attractor Simulation (`3.2.2`)
-- [x] CannonBall with Spin - impulse force, continuous downward gravity, and initial spin (`3.2.3`)
+- [x] Interactive Mouse Drag, Spin & Damping Baton Simulation (`Exercise 3.2`)
+- [x] Force-driven Angular Motion & N-Body Attractor Simulation (`Example 3.2`)
+- [x] CannonBall with Spin - impulse force, continuous downward gravity, and initial spin (`Exercise 3.3`)
 
 </details>
 
@@ -85,7 +85,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 <summary><b>3.3 — Pointing in the Direction of Motion</b></summary>
 
 - [x] Calculating heading orientation angle ($\theta = \text{atan2}(v_y, v_x)$)
-- [x] Vehicle acceleration toward target mouse position (`3.3`)
+- [x] Vehicle acceleration toward target mouse position (`Example 3.3`)
 - [x] Interactive Vehicle Steering Simulation with WASD / Arrow Keys (`Exercise 3.4`)
 
 </details>
@@ -95,7 +95,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 
 - [x] Polar $(r, \theta)$ to Cartesian $(x, y)$ conversion ($x = r \cdot \cos(\theta)$, $y = r \cdot \sin(\theta)$)
 - [x] Interactive Polar to Cartesian simulation (`Example 3.4`)
-- [x] Polar Oscillation circular motion (`Example 3.4.1`)
+- [x] Polar Oscillation circular motion (`Example 3.4b`)
 
 </details>
 
@@ -106,14 +106,14 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] Amplitude, Period, and Frequency ($x = A \cdot \sin(2\pi t / \text{period})$)
 - [x] Simple Harmonic Motion (SHM) horizontal oscillation (`Example 3.5`)
 - [x] SHM with Angular Velocity (`Example 3.6`)
-- [x] Spring Bob simulation using `map()` (`Exercise 3.7.0`)
-- [x] `Oscillator` struct & independent X/Y oscillations (`Example 3.7.1`)
+- [x] Spring Bob simulation using `map()` (`Exercise 3.7`)
+- [x] `Oscillator` struct & independent X/Y oscillations (`Example 3.7`)
 - [x] Radial Petals: Structured Amplitudes & Phase Offsets (`Exercise 3.8`)
 - [x] Accelerating Oscillator & Insect Legs Locomotion (`Exercise 3.9`)
 
 </details>
 
-<details open>
+<details>
 <summary><b>3.6 — Waves & Superposition</b></summary>
 
 - [x] Static Sine Wave spatial plot (`Example 3.8`)
@@ -124,12 +124,12 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 </details>
 
 <details open>
-<summary><b>3.7 — Spring Forces & Dynamics</b> (Upcoming)</summary>
+<summary><b>3.7 — Spring Forces & Dynamics</b></summary>
 
-- [ ] Hooke's Law ($F_s = -k x$)
-- [ ] Spring + Bob physics system
-- [ ] Gravity + Spring equilibrium physics
-- [ ] Inclined-Plane exercise (Vector breakdown + Friction + Gravity)
+- [x] Hooke's Law ($F_s = -k x$) (`Example 3.10: A Spring Connection`)
+- [x] Spring + Bob physics system (`Bob` & `Spring` domain entities with coiled spring rendering and interactive mouse dragging)
+- [x] Gravity + Spring equilibrium physics
+- [ ] Multiple connected springs & bobs (`Exercise 3.13`) (Upcoming)
 
 </details>
 
