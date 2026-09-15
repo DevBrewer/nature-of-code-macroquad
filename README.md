@@ -129,7 +129,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] Hooke's Law ($F_s = -k x$) (`Example 3.10: A Spring Connection`)
 - [x] Spring + Bob physics system (`Bob` & `Spring` domain entities with coiled spring rendering and interactive mouse dragging)
 - [x] Gravity + Spring equilibrium physics
-- [ ] Multiple connected springs & bobs (`Exercise 3.13`) (Upcoming)
+- [x] Multiple connected springs & bobs with interactive dragging, anchor toggling, and multi-mode rendering (`Exercise 3.14: Multiple Bobs & Spring Connections`)
 
 </details>
 
