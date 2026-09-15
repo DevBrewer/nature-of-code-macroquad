@@ -12,7 +12,8 @@ use crate::{
     exercises::{
         accelerating_oscillator::AcceleratingOscillatorExample,
         additive_waves::AdditiveWavesExample, angular_motion::AngularMotion,
-        cannon::CannonSimulation, radial_petals::RadialPetalExample, spring_bob::SpringForces,
+        cannon::CannonSimulation, multiple_bobs::MultipleBobExercise,
+        radial_petals::RadialPetalExample, spring_bob::SpringForces,
         vehicle_simulation::VehicleSimulation,
     },
 };
@@ -136,6 +137,12 @@ async fn main() {
             number: "Example 3.10",
             title: "A Spring Connection (Hooke's Law)",
             example: Box::new(SpringForceExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "Exercise 3.14",
+            title: "Multiple Bobs & Spring Connections",
+            example: Box::new(MultipleBobExercise::new()),
         },
     ];
 
