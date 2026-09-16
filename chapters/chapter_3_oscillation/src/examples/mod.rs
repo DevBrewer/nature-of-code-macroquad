@@ -6,5 +6,6 @@ pub mod oscillator_objects;
 pub mod polar_to_cartesian;
 pub mod shm;
 pub mod shm2;
+pub mod simple_pendulum;
 pub mod spring_forces;
 pub mod static_wave;

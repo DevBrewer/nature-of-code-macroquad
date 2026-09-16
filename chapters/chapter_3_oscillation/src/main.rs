@@ -6,15 +6,15 @@ use crate::{
         angle_motion::AngleRotation, angular_motion_forces::AngularMotionForces,
         direction_motion::DirectionMotion, oscillation::OscillationExample,
         oscillator_objects::OscillatorObjectExample, polar_to_cartesian::PolarToCartesian,
-        shm::ShmExample, shm2::Shm2Example, spring_forces::SpringForceExample,
-        static_wave::StaticWaveExample,
+        shm::ShmExample, shm2::Shm2Example, simple_pendulum::SimplePendulumExample,
+        spring_forces::SpringForceExample, static_wave::StaticWaveExample,
     },
     exercises::{
         accelerating_oscillator::AcceleratingOscillatorExample,
         additive_waves::AdditiveWavesExample, angular_motion::AngularMotion,
         cannon::CannonSimulation, multiple_bobs::MultipleBobExercise,
         radial_petals::RadialPetalExample, spring_bob::SpringForces,
-        vehicle_simulation::VehicleSimulation,
+        vehicle_simulation::VehicleSimulation, double_pendulum::DoublePendulumExercise,
     },
 };
 
@@ -143,6 +143,18 @@ async fn main() {
             number: "Exercise 3.14",
             title: "Multiple Bobs & Spring Connections",
             example: Box::new(MultipleBobExercise::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "Example 3.11",
+            title: "Swinging Pendulum",
+            example: Box::new(SimplePendulumExample::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "Exercise 3.16",
+            title: "Double Pendulum Simulation",
+            example: Box::new(DoublePendulumExercise::new()),
         },
     ];
 

@@ -9,5 +9,8 @@ pub use camera::{
     world_size, world_width,
 };
 pub use example::{Example, ExampleEntry};
-pub use render::{draw_axes, draw_info_panel, draw_vector, draw_world_border};
+pub use render::{
+    draw_axes, draw_info_panel, draw_vector, draw_world_border, is_hud_visible, set_hud_visible,
+    toggle_hud,
+};
 

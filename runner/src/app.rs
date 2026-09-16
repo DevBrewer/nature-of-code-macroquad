@@ -26,6 +26,7 @@ pub struct App {
     examples: Vec<ExampleEntry>,
     camera: Camera,
     clear_canvas: bool,
+    show_hud: bool,
 }
 
 impl App {
@@ -36,6 +37,7 @@ impl App {
             examples,
             camera: Camera::new(world_width, world_height),
             clear_canvas: true,
+            show_hud: true,
         }
     }
 
@@ -55,6 +57,7 @@ impl App {
             examples,
             camera: Camera::from_screen(),
             clear_canvas: true,
+            show_hud: true,
         }
     }
 
@@ -91,6 +94,11 @@ impl App {
             self.examples[self.current].example.reset();
             crate::render::reset_info_panel_offset();
             self.clear_canvas = true;
+        }
+
+        if is_key_pressed(KeyCode::H) {
+            self.show_hud = !self.show_hud;
+            crate::render::set_hud_visible(self.show_hud);
         }
 
         if is_key_pressed(KeyCode::Q) || is_key_pressed(KeyCode::Escape) {
@@ -140,6 +148,18 @@ impl App {
     }
 
     fn draw_ui(&self) {
+        if !self.show_hud {
+            // Subtle, minimal hint when HUD overlay is hidden
+            draw_text(
+                "[H] Show HUD",
+                10.0,
+                16.0,
+                13.0,
+                macroquad::color::Color::new(0.65, 0.70, 0.78, 0.40),
+            );
+            return;
+        }
+
         let current = &self.examples[self.current];
         let sw = macroquad::window::screen_width();
 
@@ -173,7 +193,7 @@ impl App {
         // Navigation hints and counter
         draw_text(
             format!(
-                "[<- / ->] Nav   [R] Reset   [Q / ESC] Quit   ({}/{})",
+                "[<- / ->] Nav   [R] Reset   [H] Toggle HUD   [Q / ESC] Quit   ({}/{})",
                 self.current + 1,
                 self.examples.len(),
             ),

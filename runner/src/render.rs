@@ -14,6 +14,27 @@ static mut PANEL_OFFSET_Y: f32 = 0.0;
 static mut IS_DRAGGING_PANEL: bool = false;
 static mut DRAG_START_MOUSE: (f32, f32) = (0.0, 0.0);
 static mut DRAG_START_OFFSET: (f32, f32) = (0.0, 0.0);
+static mut HUD_VISIBLE: bool = true;
+
+/// Returns whether the HUD info panel overlay is visible.
+pub fn is_hud_visible() -> bool {
+    unsafe { HUD_VISIBLE }
+}
+
+/// Sets the HUD info panel overlay visibility.
+pub fn set_hud_visible(visible: bool) {
+    unsafe {
+        HUD_VISIBLE = visible;
+    }
+}
+
+/// Toggles the HUD info panel overlay visibility.
+pub fn toggle_hud() -> bool {
+    unsafe {
+        HUD_VISIBLE = !HUD_VISIBLE;
+        HUD_VISIBLE
+    }
+}
 
 /// Resets the HUD info panel drag position to default (0, 0).
 pub fn reset_info_panel_offset() {
@@ -76,6 +97,10 @@ pub fn draw_world_border() {
 
 /// Renders a modern, interactive, and draggable glassmorphic information panel.
 pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
+    if !is_hud_visible() {
+        return;
+    }
+
     let line_height = 18.0;
     let padding_x = 10.0;
     let padding_y = 8.0;

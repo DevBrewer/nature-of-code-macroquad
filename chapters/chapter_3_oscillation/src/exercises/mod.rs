@@ -2,6 +2,7 @@ pub mod accelerating_oscillator;
 pub mod additive_waves;
 pub mod angular_motion;
 pub mod cannon;
+pub mod double_pendulum;
 pub mod multiple_bobs;
 pub mod radial_petals;
 pub mod spring_bob;
