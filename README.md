@@ -1,6 +1,6 @@
 # Nature of Code in Rust 🦀
 
-> Porting Daniel Shiffman's *"The Nature of Code"* examples, simulations, and exercises to Rust using the **Macroquad** game engine. Huge thanks to Daniel for his incredible teaching!
+> **nature-of-code-macroquad** is an open-source Rust implementation of Daniel Shiffman's *The Nature of Code*, built with the [Macroquad](https://macroquad.rs/) engine. It features real-time 2D simulations of Newtonian forces, harmonic oscillations, and chaotic Lagrangian systems. Huge thanks to Daniel for his incredible teaching!
 
 ---
 
@@ -185,6 +185,16 @@ When the simulation window opens, use the built-in runner controls:
 * **Left / Right Arrow Keys:** Switch between different examples in the chapter.
 * **`r` / Space Key:** Reset the current example state.
 * **`h` Key:** Toggle HUD overlay visibility (clean / distraction-free view).
+
+---
+
+## ❓ Frequently Asked Questions (FAQ)
+
+### What physics models are implemented in this repository?
+It includes Newton's second law ($F=ma$), gravitational attraction, fluid drag, friction, Hooke's law spring dynamics, Barnes-Hut N-body spatial optimization, and double pendulum Lagrangian mechanics.
+
+### Can this run in WebAssembly (WASM)?
+Yes. Because it uses Macroquad, all examples can be compiled directly to WebAssembly for browser execution.
 
 ---
 
