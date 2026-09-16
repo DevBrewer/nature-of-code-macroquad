@@ -123,7 +123,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 
 </details>
 
-<details open>
+<details>
 <summary><b>3.7 — Spring Forces & Dynamics</b></summary>
 
 - [x] Hooke's Law ($F_s = -k x$) (`Example 3.10: A Spring Connection`)
@@ -132,6 +132,36 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 - [x] Multiple connected springs & bobs with interactive dragging, anchor toggling, and multi-mode rendering (`Exercise 3.14: Multiple Bobs & Spring Connections`)
 
 </details>
+
+<details open>
+<summary><b>3.8 — Pendulums</b></summary>
+
+- [x] Simple Pendulum with angular acceleration, damping, vector visualization, and interactive mouse dragging (`Example 3.11: Swinging Pendulum`)
+- [x] Double Pendulum Simulation & Chaotic Trajectory Pattern Trace (`Exercise 3.16: Double Pendulum Simulation`)
+
+  <p align="center">
+    <img src="assets/double_pendulum_pattern.jpg" alt="Double Pendulum Chaotic Trajectory Trace" width="280" />
+    <br/>
+    <em>Chaotic orbit trajectory pattern traced by the secondary bob using Lagrangian mechanics</em>
+  </p>
+
+</details>
+
+<details open>
+<summary><b>3.9 — Inclined Planes & Normal Force</b></summary>
+
+- [ ] Normal force trigonometry on an incline ($F_N = mg \cos\theta$) (`Exercise 3.16`)
+- [ ] Box sliding down an incline with friction ($f = \mu F_N$) (`Exercise 3.17`)
+
+</details>
+
+<details open>
+<summary><b>Ecosystem Project</b></summary>
+
+- [ ] Ecosystem Project 4: Creature with internal oscillation driving locomotion / flapping appendages (`The Ecosystem Project`)
+
+</details>
+
 
 ---
 
@@ -153,7 +183,8 @@ cargo run -p chapter_3_oscillation
 When the simulation window opens, use the built-in runner controls:
 
 * **Left / Right Arrow Keys:** Switch between different examples in the chapter.
-* **`r` Key:** Reset the current example state.
+* **`r` / Space Key:** Reset the current example state.
+* **`h` Key:** Toggle HUD overlay visibility (clean / distraction-free view).
 
 ---
 
