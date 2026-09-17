@@ -194,9 +194,6 @@ When the simulation window opens, use the built-in runner controls:
 ### What physics models are implemented in this repository?
 It includes Newton's second law ($F=ma$), gravitational attraction, fluid drag, friction, Hooke's law spring dynamics, Barnes-Hut N-body spatial optimization, double pendulum Lagrangian mechanics, and inclined plane normal force / friction decomposition.
 
-### Can this run in WebAssembly (WASM)?
-Yes. Because it uses Macroquad, all examples can be compiled directly to WebAssembly for browser execution.
-
 ---
 
 ## 🛠️ Tech Stack
