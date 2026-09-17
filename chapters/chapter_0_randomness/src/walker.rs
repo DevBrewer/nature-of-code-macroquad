@@ -33,6 +33,7 @@ impl Walker {
         draw_circle(self.x, self.y, 2.0, WHITE);
     }
 
+    #[allow(dead_code)]
     pub fn reset(&mut self) {
         *self = Self::new();
     }

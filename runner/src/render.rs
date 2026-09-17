@@ -1,13 +1,38 @@
+use std::sync::OnceLock;
+
 use macroquad::{
-    color::{Color, GRAY},
+    color::Color,
     input::{MouseButton, is_mouse_button_down, is_mouse_button_pressed, is_mouse_button_released},
     shapes::{draw_line, draw_rectangle, draw_rectangle_lines},
-    text::draw_text,
+    text::{Font, TextParams, draw_text_ex, load_ttf_font_from_bytes},
 };
 
 use vec_math::Vec2;
 
 use crate::camera::{mouse_world_position, world_height, world_width};
+
+static FONT_DATA: &[u8] = include_bytes!("../assets/font.ttf");
+static UI_FONT: OnceLock<Font> = OnceLock::new();
+
+pub fn get_ui_font() -> &'static Font {
+    UI_FONT.get_or_init(|| load_ttf_font_from_bytes(FONT_DATA).expect("Failed to load TTF font"))
+}
+
+pub fn draw_clean_text(text: &str, x: f32, y: f32, size: f32, color: Color) {
+    let font = get_ui_font();
+    draw_text_ex(
+        text,
+        x,
+        y,
+        TextParams {
+            font: Some(font),
+            font_size: size as u16,
+            font_scale: 1.0,
+            color,
+            ..Default::default()
+        },
+    );
+}
 
 static mut PANEL_OFFSET_X: f32 = 0.0;
 static mut PANEL_OFFSET_Y: f32 = 0.0;
@@ -80,7 +105,7 @@ pub fn draw_vector(origin: Vec2, vector: Vec2, color: Color, label: Option<&str>
 
     // Draw text label next to vector tip if provided
     if let Some(text) = label {
-        draw_text(text, end.x + 8.0, end.y + 4.0, 18.0, color);
+        draw_clean_text(text, end.x + 8.0, end.y + 4.0, 16.0, color);
     }
 }
 
@@ -96,7 +121,7 @@ pub fn draw_world_border() {
         w - thickness,
         h - thickness,
         thickness,
-        GRAY,
+        Color::new(0.2, 0.4, 0.6, 0.8),
     );
 }
 
@@ -106,99 +131,88 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
         return;
     }
 
-    let line_height = 18.0;
-    let padding_x = 10.0;
-    let padding_y = 8.0;
-    let height = lines.len() as f32 * line_height + padding_y * 2.0;
+    let padding_x = 14.0;
+    let padding_y = 12.0;
+    let line_height = 20.0;
+    let header_margin = 8.0;
 
-    // Convert mouse to world space coordinates matching Camera2D canvas
-    let m_world = mouse_world_position();
-    let mx = m_world.x;
-    let my = m_world.y;
+    let height = padding_y * 2.0 + header_margin + (lines.len() as f32) * line_height;
+
+    // Apply interactive drag offset
+    let (offset_x, offset_y) = unsafe { (PANEL_OFFSET_X, PANEL_OFFSET_Y) };
+    let mut panel_x = x + offset_x;
+    let mut panel_y = y + offset_y;
+
+    // Clamp panel inside world boundaries
+    let max_x = (world_width() - width).max(0.0);
+    let max_y = (world_height() - height).max(0.0);
+    panel_x = panel_x.clamp(0.0, max_x);
+    panel_y = panel_y.clamp(0.0, max_y);
+
+    // Handle mouse drag interaction
+    let mouse = mouse_world_position();
+    let mouse_over = mouse.x >= panel_x
+        && mouse.x <= panel_x + width
+        && mouse.y >= panel_y
+        && mouse.y <= panel_y + height;
 
     unsafe {
-        let max_x = (world_width() - width - 5.0).max(5.0);
-        let max_y = (world_height() - height - 5.0).max(5.0);
-
-        let unclamped_x = x + PANEL_OFFSET_X;
-        let unclamped_y = y + PANEL_OFFSET_Y;
-
-        let panel_x = unclamped_x.clamp(5.0, max_x);
-        let panel_y = unclamped_y.clamp(5.0, max_y);
-
-        // Check for Mouse Dragging on Info Panel
-        if is_mouse_button_pressed(MouseButton::Left)
-            && mx >= panel_x
-            && mx <= panel_x + width
-            && my >= panel_y
-            && my <= panel_y + height
-        {
+        if is_mouse_button_pressed(MouseButton::Left) && mouse_over {
             IS_DRAGGING_PANEL = true;
-            DRAG_START_MOUSE = (mx, my);
+            DRAG_START_MOUSE = (mouse.x, mouse.y);
             DRAG_START_OFFSET = (PANEL_OFFSET_X, PANEL_OFFSET_Y);
         }
 
         if IS_DRAGGING_PANEL {
             if is_mouse_button_down(MouseButton::Left) {
-                PANEL_OFFSET_X = DRAG_START_OFFSET.0 + (mx - DRAG_START_MOUSE.0);
-                PANEL_OFFSET_Y = DRAG_START_OFFSET.1 + (my - DRAG_START_MOUSE.1);
-            } else {
+                PANEL_OFFSET_X = DRAG_START_OFFSET.0 + (mouse.x - DRAG_START_MOUSE.0);
+                PANEL_OFFSET_Y = DRAG_START_OFFSET.1 + (mouse.y - DRAG_START_MOUSE.1);
+            }
+
+            if is_mouse_button_released(MouseButton::Left) {
                 IS_DRAGGING_PANEL = false;
             }
         }
+    }
 
-        if is_mouse_button_released(MouseButton::Left) {
-            IS_DRAGGING_PANEL = false;
-        }
+    // Frosted / dark panel background
+    draw_rectangle(
+        panel_x,
+        panel_y,
+        width,
+        height,
+        Color::new(0.05, 0.08, 0.14, 0.90),
+    );
 
-        // Drop shadow for depth
-        draw_rectangle(
-            panel_x + 3.0,
-            panel_y + 3.0,
-            width,
-            height,
-            Color::new(0.0, 0.0, 0.0, 0.35),
-        );
+    // Top accent line
+    draw_rectangle(
+        panel_x,
+        panel_y,
+        width,
+        3.0,
+        Color::new(0.25, 0.55, 0.95, 0.85),
+    );
 
-        // Dark glassmorphic background
-        draw_rectangle(
-            panel_x,
-            panel_y,
-            width,
-            height,
-            Color::new(0.05, 0.07, 0.12, 0.90),
-        );
+    // Crisp border (highlighted cyan when dragging)
+    let border_color = if unsafe { IS_DRAGGING_PANEL } {
+        Color::new(0.40, 0.75, 1.0, 0.95)
+    } else {
+        Color::new(0.30, 0.40, 0.55, 0.70)
+    };
+    draw_rectangle_lines(panel_x, panel_y, width, height, 1.2, border_color);
 
-        // Top accent line
-        draw_rectangle(
-            panel_x,
-            panel_y,
-            width,
-            3.0,
-            Color::new(0.25, 0.55, 0.95, 0.85),
-        );
+    // Move handle hint icon in top right
+    draw_clean_text(
+        "[Move]",
+        panel_x + width - 46.0,
+        panel_y + 14.0,
+        12.0,
+        Color::new(0.50, 0.60, 0.75, 0.70),
+    );
 
-        // Crisp border (highlighted cyan when dragging)
-        let border_color = if IS_DRAGGING_PANEL {
-            Color::new(0.40, 0.75, 1.0, 0.95)
-        } else {
-            Color::new(0.30, 0.40, 0.55, 0.70)
-        };
-        draw_rectangle_lines(panel_x, panel_y, width, height, 1.2, border_color);
-
-        // Move handle hint icon in top right
-        draw_text(
-            "[Move]",
-            panel_x + width - 50.0,
-            panel_y + 13.0,
-            11.0,
-            Color::new(0.50, 0.60, 0.75, 0.60),
-        );
-
-        for (i, (text, color)) in lines.iter().enumerate() {
-            let text_y = panel_y + padding_y + (i as f32 + 1.0) * line_height - 3.0;
-            draw_text(text, panel_x + padding_x, text_y, 15.0, *color);
-        }
+    for (i, (text, color)) in lines.iter().enumerate() {
+        let text_y = panel_y + padding_y + (i as f32 + 1.0) * line_height - 3.0;
+        draw_clean_text(text, panel_x + padding_x, text_y, 12.0, *color);
     }
 }
 

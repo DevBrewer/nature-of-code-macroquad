@@ -99,7 +99,7 @@ impl Camera {
         set_world_size(world_width, world_height);
 
         let render_target = render_target(world_width as u32, world_height as u32);
-        render_target.texture.set_filter(FilterMode::Nearest);
+        render_target.texture.set_filter(FilterMode::Linear);
 
         let mut camera =
             Camera2D::from_display_rect(Rect::new(0.0, 0.0, world_width, world_height));

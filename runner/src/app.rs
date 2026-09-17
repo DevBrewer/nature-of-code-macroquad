@@ -2,11 +2,14 @@ use macroquad::{
     camera::set_default_camera,
     color::{Color, WHITE},
     input::{KeyCode, is_key_pressed},
-    text::draw_text,
     window::{Conf, clear_background},
 };
 
-use crate::{camera::Camera, example::ExampleEntry, render::fade_world};
+use crate::{
+    camera::Camera,
+    example::ExampleEntry,
+    render::{draw_clean_text, fade_world},
+};
 
 /// Constructs a standard Macroquad window configuration.
 pub fn window_conf(title: &str, width: i32, height: i32) -> Conf {
@@ -14,7 +17,7 @@ pub fn window_conf(title: &str, width: i32, height: i32) -> Conf {
         window_title: title.to_string(),
         window_width: width,
         window_height: height,
-        high_dpi: false,
+        high_dpi: true,
         sample_count: 4,
         window_resizable: false,
         ..Default::default()
@@ -150,12 +153,12 @@ impl App {
     fn draw_ui(&self) {
         if !self.show_hud {
             // Subtle, minimal hint when HUD overlay is hidden
-            draw_text(
+            draw_clean_text(
                 "[H] Show HUD",
                 10.0,
                 16.0,
-                13.0,
-                macroquad::color::Color::new(0.65, 0.70, 0.78, 0.40),
+                14.0,
+                macroquad::color::Color::new(0.65, 0.70, 0.78, 0.50),
             );
             return;
         }
@@ -170,7 +173,7 @@ impl App {
             0.0,
             sw,
             header_height,
-            macroquad::color::Color::new(0.06, 0.08, 0.12, 0.88),
+            macroquad::color::Color::new(0.06, 0.08, 0.12, 0.90),
         );
         macroquad::shapes::draw_line(
             0.0,
@@ -182,8 +185,8 @@ impl App {
         );
 
         // Example title
-        draw_text(
-            format!("{}. {}", current.number, current.title),
+        draw_clean_text(
+            &format!("{}. {}", current.number, current.title),
             10.0,
             18.0,
             16.0,
@@ -191,15 +194,15 @@ impl App {
         );
 
         // Navigation hints and counter
-        draw_text(
-            format!(
+        draw_clean_text(
+            &format!(
                 "[<- / ->] Nav   [R] Reset   [H] Toggle HUD   [Q / ESC] Quit   ({}/{})",
                 self.current + 1,
                 self.examples.len(),
             ),
             10.0,
             34.0,
-            14.0,
+            13.0,
             macroquad::color::Color::new(0.65, 0.70, 0.78, 0.95),
         );
     }
