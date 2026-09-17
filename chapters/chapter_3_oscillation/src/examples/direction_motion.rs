@@ -91,7 +91,7 @@ impl Mover {
         draw_line(back_right.x, back_right.y, tip.x, tip.y, 2.0, WHITE);
 
         // Render velocity vector arrow in direction of motion
-        draw_vector(self.position, self.velocity * 0.25, GREEN);
+        draw_vector(self.position, self.velocity * 0.25, GREEN, None);
     }
 }
 

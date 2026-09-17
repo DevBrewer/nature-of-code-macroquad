@@ -14,7 +14,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
   * `chapter_0_randomness`: Random walks, probability distributions, Monte Carlo selection, and Perlin noise.
   * `chapter_1_vectors`: Vector math, magnitude, normalization, and Motion 101 dynamics.
   * `chapter_2_forces`: Newton's laws ($F=ma$), friction, drag forces, N-body attraction, and Barnes-Hut Quadtree optimization.
-  * `chapter_3_oscillation`: Angles, angular motion, harmonic oscillation, wave dynamics, and Hooke's Law spring physics.
+  * `chapter_3_oscillation`: Angles, angular motion, harmonic oscillation, wave dynamics, Hooke's Law spring physics, double pendulums, and inclined planes.
 
 ---
 
@@ -137,7 +137,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 <summary><b>3.8 — Pendulums</b></summary>
 
 - [x] Simple Pendulum with angular acceleration, damping, vector visualization, and interactive mouse dragging (`Example 3.11: Swinging Pendulum`)
-- [x] Double Pendulum Simulation & Chaotic Trajectory Pattern Trace (`Exercise 3.16: Double Pendulum Simulation`)
+- [x] Double Pendulum Simulation & Chaotic Trajectory Pattern Trace (`Exercise 3.15: Double Pendulum Simulation`)
 
   <p align="center">
     <img src="assets/double_pendulum_pattern.jpg" alt="Double Pendulum Chaotic Trajectory Trace" width="280" />
@@ -150,8 +150,8 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 <details open>
 <summary><b>3.9 — Inclined Planes & Normal Force</b></summary>
 
-- [ ] Normal force trigonometry on an incline ($F_N = mg \cos\theta$) (`Exercise 3.16`)
-- [ ] Box sliding down an incline with friction ($f = \mu F_N$) (`Exercise 3.17`)
+- [x] Normal force trigonometry on an incline ($F_N = mg \cos\theta$) with dynamic vector decomposition and free-body diagram visualization (`Exercise 3.16: Inclined Plane & Normal Force`)
+- [x] Box sliding down an incline with static & kinetic friction ($f = \mu F_N$) and critical slipping angle threshold (`Exercise 3.16 / 3.17`)
 
 </details>
 
@@ -185,13 +185,14 @@ When the simulation window opens, use the built-in runner controls:
 * **Left / Right Arrow Keys:** Switch between different examples in the chapter.
 * **`r` / Space Key:** Reset the current example state.
 * **`h` Key:** Toggle HUD overlay visibility (clean / distraction-free view).
+* **Mouse Drag on Info Panel:** Reposition HUD info panels dynamically anywhere across the screen.
 
 ---
 
 ## ❓ Frequently Asked Questions (FAQ)
 
 ### What physics models are implemented in this repository?
-It includes Newton's second law ($F=ma$), gravitational attraction, fluid drag, friction, Hooke's law spring dynamics, Barnes-Hut N-body spatial optimization, and double pendulum Lagrangian mechanics.
+It includes Newton's second law ($F=ma$), gravitational attraction, fluid drag, friction, Hooke's law spring dynamics, Barnes-Hut N-body spatial optimization, double pendulum Lagrangian mechanics, and inclined plane normal force / friction decomposition.
 
 ### Can this run in WebAssembly (WASM)?
 Yes. Because it uses Macroquad, all examples can be compiled directly to WebAssembly for browser execution.

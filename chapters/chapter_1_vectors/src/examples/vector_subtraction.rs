@@ -26,11 +26,9 @@ impl Example for VectorSubtraction {
 
         let direction = mouse - center;
 
-        draw_vector(center, direction, DARKGRAY);
+        draw_vector(center, direction, DARKGRAY, None);
 
         let mag_str = format!("Distance: {:.1} px", direction.mag());
         draw_info_panel(10.0, world_height() - 32.0, 160.0, &[(&mag_str, WHITE)]);
     }
 }
-
-

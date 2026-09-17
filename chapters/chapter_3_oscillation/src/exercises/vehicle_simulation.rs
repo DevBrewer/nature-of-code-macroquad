@@ -156,7 +156,7 @@ impl Vehicle {
         draw_circle(self.position.x, self.position.y, 3.0, RED);
 
         // Render velocity vector arrow
-        draw_vector(self.position, self.velocity * 0.25, GREEN);
+        draw_vector(self.position, self.velocity * 0.25, GREEN, Some("Velocity"));
     }
 }
 

@@ -56,11 +56,11 @@ impl Example for ForceExample {
             WHITE,
         );
         // Visual representation of gravity.
-        draw_vector(self.mover.position, Vec2::new(0.0, 30.0), BLUE);
+        draw_vector(self.mover.position, Vec2::new(0.0, 30.0), BLUE, None);
 
         // Visual representation of wind
         if is_mouse_button_down(MouseButton::Left) {
-            draw_vector(self.mover.position, Vec2::new(30.0, 0.0), GRAY);
+            draw_vector(self.mover.position, Vec2::new(30.0, 0.0), GRAY, None);
         }
         // -------------------------
         // Information

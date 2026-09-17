@@ -30,8 +30,8 @@ impl Example for VectorMultiplication {
         let vector = mouse - center;
         let scaled = vector * 0.5;
 
-        draw_vector(center, vector, GRAY);
-        draw_vector(center, scaled, RED);
+        draw_vector(center, vector, GRAY, None);
+        draw_vector(center, scaled, RED, None);
 
         let orig_str = format!("Original (GRAY): {:.1} px", vector.mag());
         let scaled_str = format!("Scaled (RED)  : {:.1} px (0.5x)", scaled.mag());
@@ -40,12 +40,7 @@ impl Example for VectorMultiplication {
             10.0,
             world_height() - 48.0,
             230.0,
-            &[
-                (&orig_str, GRAY),
-                (&scaled_str, RED),
-            ],
+            &[(&orig_str, GRAY), (&scaled_str, RED)],
         );
     }
 }
-
-

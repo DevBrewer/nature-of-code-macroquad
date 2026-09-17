@@ -46,6 +46,7 @@ pub fn hue_to_rgb(hue: f32, alpha: f32) -> Color {
 
 /// Double Pendulum Physics Simulation
 ///
+/// ```text
 /// ============================================================================
 /// LAGRANGIAN MECHANICS FORMULATION & DERIVATION
 /// ============================================================================
@@ -123,6 +124,7 @@ pub fn hue_to_rgb(hue: f32, alpha: f32) -> Color {
 ///             + (θ2')^2 * l2 * m2 * cos(Δ) ) ]
 ///           / (l2 * μ)
 /// ============================================================================
+/// ```
 pub struct DoublePendulum {
     pub pivot: Vec2,
 

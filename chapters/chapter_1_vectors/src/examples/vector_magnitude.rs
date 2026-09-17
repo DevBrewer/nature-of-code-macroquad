@@ -42,7 +42,7 @@ impl Example for VectorMagnitude {
         draw_circle_lines(center.x, center.y, magnitude, 1.5, DARKPURPLE);
 
         // Draw vector
-        draw_vector(center, direction, GRAY);
+        draw_vector(center, direction, GRAY, None);
 
         // Bottom HUD badge for magnitude bar & text
         let hud_x = 10.0;

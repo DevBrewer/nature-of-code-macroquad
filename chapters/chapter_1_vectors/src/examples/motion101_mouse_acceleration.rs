@@ -105,10 +105,10 @@ impl Example for Motion101MouseAcceleration {
         draw_circle(self.position.x, self.position.y, self.radius, PINK);
 
         // Velocity.
-        draw_vector(self.position, self.velocity * 15.0, GRAY);
+        draw_vector(self.position, self.velocity * 15.0, GRAY, None);
 
         // Acceleration.
-        draw_vector(self.position, self.acceleration * 300.0, RED);
+        draw_vector(self.position, self.acceleration * 300.0, RED, None);
 
         let speed_str = format!("Speed : {:.2}", self.velocity.mag());
         let acc_str = format!("Accel : {:.2} (To Mouse)", self.acceleration.mag());
@@ -117,11 +117,7 @@ impl Example for Motion101MouseAcceleration {
             10.0,
             world_height() - 48.0,
             190.0,
-            &[
-                (&speed_str, GRAY),
-                (&acc_str, RED),
-            ],
+            &[(&speed_str, GRAY), (&acc_str, RED)],
         );
     }
 }
-

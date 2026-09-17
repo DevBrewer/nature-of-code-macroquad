@@ -127,7 +127,7 @@ impl Pendulum {
         let gravity_force_magnitude = GRAVITY * VECTOR_VISUAL_SCALE;
 
         let fg_vector = Vec2::new(0.0, gravity_force_magnitude);
-        draw_vector(self.bob, fg_vector, RED);
+        draw_vector(self.bob, fg_vector, RED, Some("mg"));
 
         // Draw Tangential Displacement Vector (s) -> Points along the arc path
         // Perpendicular tangent heading to a circle in screen space: (cos, -sin)
@@ -138,7 +138,7 @@ impl Pendulum {
 
         let s_vector = displacement_direction * displacement_magnitude;
 
-        draw_vector(self.bob, s_vector, GREEN);
+        draw_vector(self.bob, s_vector, GREEN, Some("S"));
     }
 }
 

@@ -92,13 +92,16 @@ impl Example for Motion101Acceleraton {
         draw_circle(self.position.x, self.position.y, self.radius, PINK);
 
         // Velocity vector (scaled so it's easier to see)
-        draw_vector(self.position, self.velocity * 15.0, GRAY);
+        draw_vector(self.position, self.velocity * 15.0, GRAY, None);
 
         // Acceleration vector
-        draw_vector(self.position, self.accleration * 500.0, RED);
+        draw_vector(self.position, self.accleration * 500.0, RED, None);
 
         let vel_str = format!("Velocity : {:.2}", self.velocity.mag());
-        let acc_str = format!("Accel    : ({:.2}, {:.2})", self.accleration.x, self.accleration.y);
+        let acc_str = format!(
+            "Accel    : ({:.2}, {:.2})",
+            self.accleration.x, self.accleration.y
+        );
         let trail_str = format!("Trail    : {} pts", self.trail.len());
 
         draw_info_panel(
@@ -113,4 +116,3 @@ impl Example for Motion101Acceleraton {
         );
     }
 }
-

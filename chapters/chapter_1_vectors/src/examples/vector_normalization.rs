@@ -34,10 +34,10 @@ impl Example for VectorNormalization {
         let normalized = vector.normalized();
 
         // Original vector
-        draw_vector(center, vector, GRAY);
+        draw_vector(center, vector, GRAY, None);
 
         // Normalized vector (scaled for visibility)
-        draw_vector(center, normalized * 100.0, GREEN);
+        draw_vector(center, normalized * 100.0, GREEN, None);
 
         let orig_str = format!("Original Mag (GRAY) : {:.1} px", vector.mag());
         let norm_str = format!("Unit Vector (GREEN)  : {:.2} (len = 1.0)", normalized.mag());
@@ -46,12 +46,7 @@ impl Example for VectorNormalization {
             10.0,
             world_height() - 48.0,
             240.0,
-            &[
-                (&orig_str, GRAY),
-                (&norm_str, GREEN),
-            ],
+            &[(&orig_str, GRAY), (&norm_str, GREEN)],
         );
     }
 }
-
-

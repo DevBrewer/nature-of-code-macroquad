@@ -55,7 +55,7 @@ pub fn draw_axes() {
     draw_line(cx, 0.0, cx, h, 1.0, Color::new(0.3, 0.3, 0.3, 1.0));
 }
 
-pub fn draw_vector(origin: Vec2, vector: Vec2, color: Color) {
+pub fn draw_vector(origin: Vec2, vector: Vec2, color: Color, label: Option<&str>) {
     let start = origin;
     let end = start + vector;
 
@@ -77,6 +77,11 @@ pub fn draw_vector(origin: Vec2, vector: Vec2, color: Color) {
 
     draw_line(end.x, end.y, left.x, left.y, 3.0, color);
     draw_line(end.x, end.y, right.x, right.y, 3.0, color);
+
+    // Draw text label next to vector tip if provided
+    if let Some(text) = label {
+        draw_text(text, end.x + 8.0, end.y + 4.0, 18.0, color);
+    }
 }
 
 // Draw border
@@ -122,12 +127,15 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
         let panel_y = unclamped_y.clamp(5.0, max_y);
 
         // Check for Mouse Dragging on Info Panel
-        if is_mouse_button_pressed(MouseButton::Left) {
-            if mx >= panel_x && mx <= panel_x + width && my >= panel_y && my <= panel_y + height {
-                IS_DRAGGING_PANEL = true;
-                DRAG_START_MOUSE = (mx, my);
-                DRAG_START_OFFSET = (PANEL_OFFSET_X, PANEL_OFFSET_Y);
-            }
+        if is_mouse_button_pressed(MouseButton::Left)
+            && mx >= panel_x
+            && mx <= panel_x + width
+            && my >= panel_y
+            && my <= panel_y + height
+        {
+            IS_DRAGGING_PANEL = true;
+            DRAG_START_MOUSE = (mx, my);
+            DRAG_START_OFFSET = (PANEL_OFFSET_X, PANEL_OFFSET_Y);
         }
 
         if IS_DRAGGING_PANEL {
@@ -144,13 +152,31 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
         }
 
         // Drop shadow for depth
-        draw_rectangle(panel_x + 3.0, panel_y + 3.0, width, height, Color::new(0.0, 0.0, 0.0, 0.35));
+        draw_rectangle(
+            panel_x + 3.0,
+            panel_y + 3.0,
+            width,
+            height,
+            Color::new(0.0, 0.0, 0.0, 0.35),
+        );
 
         // Dark glassmorphic background
-        draw_rectangle(panel_x, panel_y, width, height, Color::new(0.05, 0.07, 0.12, 0.90));
+        draw_rectangle(
+            panel_x,
+            panel_y,
+            width,
+            height,
+            Color::new(0.05, 0.07, 0.12, 0.90),
+        );
 
         // Top accent line
-        draw_rectangle(panel_x, panel_y, width, 3.0, Color::new(0.25, 0.55, 0.95, 0.85));
+        draw_rectangle(
+            panel_x,
+            panel_y,
+            width,
+            3.0,
+            Color::new(0.25, 0.55, 0.95, 0.85),
+        );
 
         // Crisp border (highlighted cyan when dragging)
         let border_color = if IS_DRAGGING_PANEL {
@@ -161,7 +187,13 @@ pub fn draw_info_panel(x: f32, y: f32, width: f32, lines: &[(&str, Color)]) {
         draw_rectangle_lines(panel_x, panel_y, width, height, 1.2, border_color);
 
         // Move handle hint icon in top right
-        draw_text("[Move]", panel_x + width - 50.0, panel_y + 13.0, 11.0, Color::new(0.50, 0.60, 0.75, 0.60));
+        draw_text(
+            "[Move]",
+            panel_x + width - 50.0,
+            panel_y + 13.0,
+            11.0,
+            Color::new(0.50, 0.60, 0.75, 0.60),
+        );
 
         for (i, (text, color)) in lines.iter().enumerate() {
             let text_y = panel_y + padding_y + (i as f32 + 1.0) * line_height - 3.0;

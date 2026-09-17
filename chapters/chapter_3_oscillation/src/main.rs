@@ -15,6 +15,7 @@ use crate::{
         cannon::CannonSimulation, multiple_bobs::MultipleBobExercise,
         radial_petals::RadialPetalExample, spring_bob::SpringForces,
         vehicle_simulation::VehicleSimulation, double_pendulum::DoublePendulumExercise,
+        inclined_plane::InclinedPlaneExercise,
     },
 };
 
@@ -152,9 +153,15 @@ async fn main() {
         },
         ExampleEntry {
             chapter: 3,
-            number: "Exercise 3.16",
+            number: "Exercise 3.15",
             title: "Double Pendulum Simulation",
             example: Box::new(DoublePendulumExercise::new()),
+        },
+        ExampleEntry {
+            chapter: 3,
+            number: "Exercise 3.16",
+            title: "Inclined Plane & Normal Force",
+            example: Box::new(InclinedPlaneExercise::new()),
         },
     ];
 

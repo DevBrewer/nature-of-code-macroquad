@@ -88,18 +88,18 @@ impl Example for FrictionExample {
         );
 
         // Gravity representation.
-        draw_vector(self.mover.position, Vec2::new(0.0, 30.0), BLUE);
+        draw_vector(self.mover.position, Vec2::new(0.0, 30.0), BLUE, None);
 
         // Wind representation.
         if is_mouse_button_down(MouseButton::Left) {
-            draw_vector(self.mover.position, Vec2::new(30.0, 0.0), GRAY);
+            draw_vector(self.mover.position, Vec2::new(30.0, 0.0), GRAY, None);
         }
 
         // Friction representation.
         if self.mover.velocity.mag_sq() > f32::EPSILON {
             let friction_direction = self.mover.velocity.normalized() * -30.0;
 
-            draw_vector(self.mover.position, friction_direction, WHITE);
+            draw_vector(self.mover.position, friction_direction, WHITE, None);
         }
 
         let lines = [
