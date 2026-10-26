@@ -158,7 +158,7 @@ This project is structured as a single **Cargo Workspace**, sharing a high-perfo
 <details open>
 <summary><b>Ecosystem Project</b></summary>
 
-- [ ] Ecosystem Project 4: Creature with internal oscillation driving locomotion / flapping appendages (`The Ecosystem Project`)
+- [x] Aquatic Ecosystem: Creatures with internal oscillation driving locomotion, undulating tentacles, fin wave dynamics, and drifting plankton (`The Ecosystem Project: Aquatic Ecosystem`)
 
 </details>
 
