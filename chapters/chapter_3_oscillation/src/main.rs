@@ -15,7 +15,7 @@ use crate::{
         cannon::CannonSimulation, multiple_bobs::MultipleBobExercise,
         radial_petals::RadialPetalExample, spring_bob::SpringForces,
         vehicle_simulation::VehicleSimulation, double_pendulum::DoublePendulumExercise,
-        inclined_plane::InclinedPlaneExercise,
+        inclined_plane::InclinedPlaneExercise, ecosystem::AquaticEcosystem,
     },
 };
 
@@ -37,6 +37,12 @@ fn conf() -> Conf {
 #[macroquad::main(conf)]
 async fn main() {
     let examples = vec![
+        ExampleEntry {
+            chapter: 3,
+            number: "Exercise",
+            title: "Aquatic Ecosystem (Plankton Drift)",
+            example: Box::new(AquaticEcosystem::new()),
+        },
         ExampleEntry {
             chapter: 3,
             number: "Example 3.1",
